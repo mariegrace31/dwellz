@@ -26,12 +26,12 @@ function Header() {
       <div className="hidden md:block">
         <nav aria-label="Global">
           <ul className="flex items-center gap-6 text-sm">
-            <Link href={'/'}>
-            <li>
-              <a className={`'font-medium cursor-pointer transition hover:text-primary'
-            ${path=='/'&& 'text-primary'}`}> For Sale </a>
-            </li>
-            </Link>
+          <Link href={'/'}>
+              <li>
+                <a className={`'font-medium cursor-pointer transition hover:text-primary'
+                  ${path=='/'&& 'text-primary'}`}> For Sale </a>
+              </li>
+          </Link>
 
             <li>
               <a className="font-medium cursor-pointer transition hover:text-primary" href="#"> For Rent </a>
@@ -74,4 +74,4 @@ function Header() {
   )
 }
 
-export default Header;
+export default Header;  
