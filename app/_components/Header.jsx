@@ -27,19 +27,12 @@ function Header() {
         <nav aria-label="Global">
           <ul className="flex items-center gap-6 text-sm">
           <Link href={'/'}>
-              <li>
-                <a className={`'font-medium cursor-pointer transition hover:text-primary'
-                  ${path=='/'&& 'text-primary'}`}> For Sale </a>
+              <li className={`'font-medium cursor-pointer transition hover:text-primary'
+                  ${path=='/'&& 'text-primary'}`}> For Sale
               </li>
           </Link>
-
-            <li>
-              <a className="font-medium cursor-pointer transition hover:text-primary" href="#"> For Rent </a>
-            </li>
-
-            <li>
-              <a className="font-medium cursor-pointer transition hover:text-primary" href="#"> Agent Finder </a>
-            </li>
+            <li className="font-medium cursor-pointer transition hover:text-primary"> For Rent</li>
+            <li className="font-medium cursor-pointer transition hover:text-primary" > Agent Finder</li>
           </ul>
         </nav>
       </div>
