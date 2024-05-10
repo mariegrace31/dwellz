@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import { useUser, UserButton } from '@clerk/nextjs'
 import { FaPlus } from "react-icons/fa6";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -9,6 +10,7 @@ import { Button } from '@/components/ui/button';
 function Header() {
 
   const path = usePathname();
+  const {user,isSignedIn}=useUser();
 
   useEffect(() =>{
 
@@ -26,20 +28,13 @@ function Header() {
       <div className="hidden md:block">
         <nav aria-label="Global">
           <ul className="flex items-center gap-6 text-sm">
-            <Link href={'/'}>
-            <li>
-              <a className={`'font-medium cursor-pointer transition hover:text-primary'
-            ${path=='/'&& 'text-primary'}`}> For Sale </a>
-            </li>
-            </Link>
-
-            <li>
-              <a className="font-medium cursor-pointer transition hover:text-primary" href="#"> For Rent </a>
-            </li>
-
-            <li>
-              <a className="font-medium cursor-pointer transition hover:text-primary" href="#"> Agent Finder </a>
-            </li>
+          <Link href={'/'}>
+              <li className={`'font-medium cursor-pointer transition hover:text-primary'
+                  ${path=='/'&& 'text-primary'}`}> For Sale
+              </li>
+          </Link>
+            <li className="font-medium cursor-pointer transition hover:text-primary"> For Rent</li>
+            <li className="font-medium cursor-pointer transition hover:text-primary" > Agent Finder</li>
           </ul>
         </nav>
       </div>
@@ -47,10 +42,15 @@ function Header() {
       <div className="flex items-center gap-4">
         <div className="sm:flex sm:gap-4">
           <Button><FaPlus className='px-1 w-5 h-5' />Post Your Ad</Button>
-
-          <div className="hidden sm:flex">
-          <Button variant="outline">LOGIN</Button>
-          </div>
+          {isSignedIn ?
+          <UserButton />
+          :
+          <Link href={'/sign-in'}>
+            <div className="hidden sm:flex">
+              <Button variant="outline">LOGIN</Button>
+            </div>
+          </Link>
+        }
         </div>
 
         <div className="block md:hidden">
@@ -74,4 +74,4 @@ function Header() {
   )
 }
 
-export default Header;
+export default Header;  
