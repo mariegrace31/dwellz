@@ -45,9 +45,11 @@ function Header() {
           {isSignedIn ?
           <UserButton />
           :
-          <div className="hidden sm:flex">
-          <Button variant="outline">LOGIN</Button>
-          </div>
+          <Link href={'/sign-in'}>
+            <div className="hidden sm:flex">
+              <Button variant="outline">LOGIN</Button>
+            </div>
+          </Link>
         }
         </div>
 
