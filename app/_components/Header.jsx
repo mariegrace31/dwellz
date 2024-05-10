@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import { useUser, UserButton } from '@clerk/nextjs'
 import { FaPlus } from "react-icons/fa6";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -9,6 +10,7 @@ import { Button } from '@/components/ui/button';
 function Header() {
 
   const path = usePathname();
+  const {user,isSignedIn}=useUser();
 
   useEffect(() =>{
 
@@ -40,10 +42,13 @@ function Header() {
       <div className="flex items-center gap-4">
         <div className="sm:flex sm:gap-4">
           <Button><FaPlus className='px-1 w-5 h-5' />Post Your Ad</Button>
-
+          {isSignedIn ?
+          <UserButton />
+          :
           <div className="hidden sm:flex">
           <Button variant="outline">LOGIN</Button>
           </div>
+        }
         </div>
 
         <div className="block md:hidden">
