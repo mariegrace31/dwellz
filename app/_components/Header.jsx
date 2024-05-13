@@ -47,7 +47,7 @@ function Header() {
           :
           <Link href={'/sign-in'}>
             <div className="hidden sm:flex">
-              <Button variant="outline">LOGIN</Button>
+              <Button variant="outline">Sign In</Button>
             </div>
           </Link>
         }
