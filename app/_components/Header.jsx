@@ -52,7 +52,6 @@ function Header() {
           </Link>
         }
         </div>
-
         <div className="block md:hidden">
           <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
             <svg
