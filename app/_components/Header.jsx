@@ -51,6 +51,7 @@ function Header() {
             </div>
           </Link>
         }
+        
         </div>
         <div className="block md:hidden">
           <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
@@ -62,7 +63,7 @@ function Header() {
               stroke="currentColor"
               strokeWidth="2"
             >
-              
+
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
