@@ -37,7 +37,7 @@ function Header() {
             <li className="font-medium cursor-pointer transition hover:text-primary" > Agent Finder</li>
           </ul>
         </nav>
-        
+
       </div>
 
       <div className="flex items-center gap-4">
@@ -64,7 +64,6 @@ function Header() {
               stroke="currentColor"
               strokeWidth="2"
             >
-
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
