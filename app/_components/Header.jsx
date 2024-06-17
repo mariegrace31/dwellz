@@ -16,6 +16,7 @@ function Header() {
 
   },[])
 
+  
   return (
 <header className="bg-white shadow-sm fixed w-full z-10">
   <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
