@@ -11,8 +11,6 @@ function Header() {
 
   const path = usePathname();
   const {user,isSignedIn}=useUser();
-
-
   useEffect(() =>{
 
   },[])
