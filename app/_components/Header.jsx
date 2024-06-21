@@ -12,11 +12,10 @@ function Header() {
   const path = usePathname();
   const {user,isSignedIn}=useUser();
 
-  
+
   useEffect(() =>{
 
   },[])
-
 
   return (
 <header className="bg-white shadow-sm fixed w-full z-10">
