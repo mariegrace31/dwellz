@@ -11,11 +11,12 @@ function Header() {
 
   const path = usePathname();
   const {user,isSignedIn}=useUser();
-
   useEffect(() =>{
 
   },[])
 
+
+  
   return (
 <header className="bg-white shadow-sm fixed w-full z-10">
   <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -37,6 +38,7 @@ function Header() {
             <li className="font-medium cursor-pointer transition hover:text-primary" > Agent Finder</li>
           </ul>
         </nav>
+
       </div>
 
       <div className="flex items-center gap-4">
@@ -47,12 +49,12 @@ function Header() {
           :
           <Link href={'/sign-in'}>
             <div className="hidden sm:flex">
-              <Button variant="outline">LOGIN</Button>
+              <Button variant="outline">Sign In</Button>
             </div>
           </Link>
         }
-        </div>
 
+        </div>
         <div className="block md:hidden">
           <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
             <svg
