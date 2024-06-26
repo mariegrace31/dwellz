@@ -7,7 +7,7 @@ function AddNewListing() {
       <h2 className='font-bold text-2xl'>Add New Listing</h2>
       <div>
         <h2 className='text-gray-500'>Enter the address you want to list</h2>
-        
+
         <GooglePlacesAutocomplete
       apiKey="****"
     />
