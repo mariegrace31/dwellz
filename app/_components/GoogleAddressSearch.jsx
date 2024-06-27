@@ -1,9 +1,9 @@
 "use client"
 import React from 'react';
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-function GoogleAddressSearch() {
+function GoogleAddressSearch({selectedAddress, setCoordinates}) {
   return (
     <div className='flex gap-1 items-center w-full pt-3'>
       <FaMapMarkerAlt className='h-10 w-12 text-primary rounded-lg bg-green-200 p-2' />
@@ -14,7 +14,13 @@ function GoogleAddressSearch() {
           isClearable:true,
           className:'w-full',
           onChange:(place)=>{
+            selectedAddress(place);
             console.log(place);
+            geocodeByAddress(place.label)
+            .then(result=>getLatLng(result[0]))
+            .then(({lat,lng})=>{
+              setCoordinates({lat:lng})
+            })
           }
         }}
       />
