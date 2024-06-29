@@ -4,14 +4,18 @@ import GoogleAddressSearch from '@/app/_components/GoogleAddressSearch';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/utils/supabase/client';
 import { useUser } from '@clerk/nextjs';
+import { toast } from 'sonner';
+import { FiLoader } from "react-icons/fi";
 
 function AddNewListing() {
   const [selectedAddress,setSelectedAddress]=useState();
   const [coordinates,setCoordinates]=useState();
   const {user} = useUser();
+  const [loader, setLoader]= useState(false);
   
   const nextHandler=async()=> {
-    console.log(selectedAddress,coordinates);
+
+    setLoader(true)
 
   const { data, error } = await supabase
   .from('listing')
@@ -25,12 +29,16 @@ function AddNewListing() {
  
 if (data)
   {
+    setLoader(false)
     console.log("New Data Added,", data);
+    toast("New Address Added")
   }
 
   if(error)
     {
+      setLoader(false)
       console.log("Error");
+      toast("Server Side Error")
     }
         
   }
@@ -45,9 +53,10 @@ if (data)
             setCoordinates={(value)=>setCoordinates(value)}
           />
           <Button
-           disabled={!selectedAddress || !coordinates}
+           disabled={!selectedAddress || !coordinates || loader}
            onClick={nextHandler}
-          >Next</Button>
+          >
+            {loader? <FiLoader className='animate-spin' /> : 'Next'} </Button>
         </div>
       </div>
     </div>

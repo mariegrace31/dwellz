@@ -4,6 +4,7 @@ import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-goo
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 function GoogleAddressSearch({selectedAddress, setCoordinates}) {
+
   return (
     <div className='flex gap-1 items-center w-full pt-3'>
       <FaMapMarkerAlt className='h-10 w-12 text-primary rounded-lg bg-green-200 p-2' />
