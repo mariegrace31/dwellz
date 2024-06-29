@@ -2,12 +2,37 @@
 import React, { useState }  from 'react';
 import GoogleAddressSearch from '@/app/_components/GoogleAddressSearch';
 import { Button } from '@/components/ui/button';
+import { supabase } from '@/utils/supabase/client';
+import { useUser } from '@clerk/nextjs';
 
 function AddNewListing() {
   const [selectedAddress,setSelectedAddress]=useState();
   const [coordinates,setCoordinates]=useState();
-  const nextHandler=()=> {
+  const {user} = useUser();
+  
+  const nextHandler=async()=> {
     console.log(selectedAddress,coordinates);
+
+  const { data, error } = await supabase
+  .from('listing')
+  .insert([
+    { address: selectedAddress.label,
+      coordinates: coordinates,
+      createdBy:user?.primaryEmailAddress.emailAddress
+    },
+  ])
+.select();
+ 
+if (data)
+  {
+    console.log("New Data Added,", data);
+  }
+
+  if(error)
+    {
+      console.log("Error");
+    }
+        
   }
   return (
     <div className='mt-10 md:mx-56 lg:mx-80'>
