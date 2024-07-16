@@ -52,6 +52,7 @@ if (data)
             selectedAddress={(value)=>setSelectedAddress(value)}
             setCoordinates={(value)=>setCoordinates(value)}
           />
+          
           <Button
            disabled={!selectedAddress || !coordinates || loader}
            onClick={nextHandler}
