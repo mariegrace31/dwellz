@@ -43,7 +43,9 @@ function Header() {
 
       <div className="flex items-center gap-4">
         <div className="sm:flex sm:gap-4">
+          <Link href={'/add-new-listing'}>
           <Button><FaPlus className='px-1 w-5 h-5' />Post Your Ad</Button>
+          </Link>
           {isSignedIn ?
           <UserButton />
           :
