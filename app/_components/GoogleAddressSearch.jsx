@@ -23,6 +23,7 @@ function GoogleAddressSearch({selectedAddress, setCoordinates}) {
               setCoordinates({lat:lng})
             })
           }
+          
         }}
       />
     </div>
