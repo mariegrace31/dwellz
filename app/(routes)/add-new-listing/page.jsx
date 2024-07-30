@@ -10,37 +10,50 @@ import { FiLoader } from "react-icons/fi";
 function AddNewListing() {
   const [selectedAddress,setSelectedAddress]=useState();
   const [coordinates,setCoordinates]=useState();
-  const {user} = useUser();
+  // const {user} = useUser();
+  const { user, isLoaded, isSignedIn } = useUser();
   const [loader, setLoader]= useState(false);
+
+  // Debugging log
+  console.log("User object:", user);
+  console.log("Is user loaded:", isLoaded);
+  console.log("Is user signed in:", isSignedIn);
   
   const nextHandler=async()=> {
 
     setLoader(true)
 
-  const { data, error } = await supabase
-  .from('listing')
-  .insert([
-    { address: selectedAddress.label,
+  try {
+    console.log("Inserting:", {
+      address: selectedAddress.label,
       coordinates: coordinates,
-      createdBy:user?.primaryEmailAddress.emailAddress
-    },
-  ])
-.select();
- 
-if (data)
-  {
-    setLoader(false)
-    console.log("New Data Added,", data);
-    toast("New Address Added")
+      createdBy: user?.primaryEmailAddress?.emailAddress,
+    });
+
+    const { data, error } = await supabase
+      .from("listing")
+      .insert([
+        {
+          address: selectedAddress.label,
+          coordinates: coordinates,
+          createdBy: user?.primaryEmailAddress?.emailAddress,
+        },
+      ]);
+
+    if (error) {
+      throw error;
+    }
+
+    setLoader(false);
+    console.log("New Data Added:", data);
+    toast("New Address Added");
+  } catch (error) {
+    setLoader(false);
+    console.error("Error:", error);
+    toast("Server Side Error: " + error.message);
   }
 
-  if(error)
-    {
-      setLoader(false)
-      console.log("Error");
-      toast("Server Side Error")
-    }
-        
+ 
   }
   return (
     <div className='mt-10 md:mx-56 lg:mx-80'>

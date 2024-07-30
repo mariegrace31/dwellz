@@ -20,9 +20,10 @@ function GoogleAddressSearch({selectedAddress, setCoordinates}) {
             geocodeByAddress(place.label)
             .then(result=>getLatLng(result[0]))
             .then(({lat,lng})=>{
-              setCoordinates({lat:lng})
+              setCoordinates({lat,lng})
             })
           }
+
         }}
       />
     </div>
